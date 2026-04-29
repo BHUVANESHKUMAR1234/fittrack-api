@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    com.fittrack: INFO
+    root: WARN
+  pattern:
+    console: '{"timestamp":"%d{yyyy-MM-dd HH:mm:ss}","level":"%level","traceId":"%X{traceId}","logger":"%logger{36}","message":"%msg"}%n'

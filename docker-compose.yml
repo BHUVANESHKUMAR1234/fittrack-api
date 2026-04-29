@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: fittrack-postgres
+    environment:
+      POSTGRES_DB: fittrack
+      POSTGRES_USER: fittrack
+      POSTGRES_PASSWORD: fittrack
+    ports:
+      - "5432:5432"
+    volumes:
+      - fittrack_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fittrack"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  fittrack-api:
+    build: .
+    container_name: fittrack-api
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      DB_URL: jdbc:postgresql://postgres:5432/fittrack
+      DB_USERNAME: fittrack
+      DB_PASSWORD: fittrack
+      JWT_SECRET: Zm10dHJhY2stZGV2LXNlY3JldC1rZXktZm9yLWxvY2FsLWRldmVsb3BtZW50LW9ubHk=
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  fittrack_pgdata:
