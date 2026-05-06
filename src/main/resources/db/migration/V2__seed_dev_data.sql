@@ -8,9 +8,9 @@ INSERT INTO users (id, email, password, first_name, last_name, role, is_active, 
 VALUES
   (gen_random_uuid(),
    'admin@fittrack.com',
-   '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy',
+   '$2a$10$XaNU5jBX3hJYEYZT1x7.9.TWKcGJYLzzRCQ5nE2wcHCoK3gQ1CLcS',
    'Admin', 'User', 'ADMIN', true, 0),
   (gen_random_uuid(),
    'demo@fittrack.com',
-   '$2a$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy',
+   '$2a$10$XaNU5jBX3hJYEYZT1x7.9.TWKcGJYLzzRCQ5nE2wcHCoK3gQ1CLcS',
    'Demo', 'User', 'USER', true, 5);
